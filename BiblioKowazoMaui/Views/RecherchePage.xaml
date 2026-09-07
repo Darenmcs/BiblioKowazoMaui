@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Page de recherche des livres -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiblioKowazoMaui.Views.RecherchePage"
+             Title="Recherche">
+
+    <!-- Permet de scroller si le contenu est long -->
+    <ScrollView>
+
+        <!-- Conteneur principal -->
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- Titre de la page -->
+            <Label Text="Recherche de Livres"
+                   FontSize="22"
+                   FontAttributes="Bold" />
+
+            <!-- Zone de filtres de recherche -->
+            <Frame Padding="12"
+                   BorderColor="#CCCCCC"
+                   CornerRadius="8">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- Recherche par titre -->
+                    <Label Text="Titre contient :" />
+                    <Entry x:Name="TxtTitre"
+                           Placeholder="Rechercher par titre..." />
+
+                    <!-- Filtre auteur -->
+                    <Label Text="Auteur :" />
+                    <Picker x:Name="PickerAuteur"
+                            Title="(Tous)" />
+
+                    <!-- Filtre éditeur -->
+                    <Label Text="Éditeur :" />
+                    <Picker x:Name="PickerEditeur"
+                            Title="(Tous)" />
+
+                    <!-- Filtre catégorie -->
+                    <Label Text="Catégorie :" />
+                    <Picker x:Name="PickerCategorie"
+                            Title="(Toutes)" />
+
+                    <!-- Date début -->
+                    <Label Text="Date début :" />
+                    <DatePicker x:Name="DpDateDebut" />
+
+                    <!-- Date fin -->
+                    <Label Text="Date fin :" />
+                    <DatePicker x:Name="DpDateFin" />
+
+                    <!-- Boutons recherche -->
+                    <HorizontalStackLayout Spacing="8">
+
+                        <!-- Lancer la recherche -->
+                        <Button Text="Rechercher"
+                                BackgroundColor="#512BD4"
+                                TextColor="White"
+                                Clicked="BtnRechercher_Click" />
+
+                        <!-- Réinitialiser filtres -->
+                        <Button Text="Réinitialiser"
+                                BackgroundColor="Gray"
+                                TextColor="White"
+                                Clicked="BtnReset_Click" />
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Message de statut -->
+            <Label x:Name="LblStatus"
+                   TextColor="Gray"
+                   FontSize="12" />
+
+            <!-- Résultats de recherche -->
+            <CollectionView x:Name="cvResultats"
+                            SelectionMode="None"
+                            EmptyView="Aucun résultat.">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <!-- Carte d’un livre -->
+                        <Frame Margin="0,4"
+                               Padding="12"
+                               CornerRadius="8"
+                               BorderColor="#CCCCCC">
+
+                            <VerticalStackLayout Spacing="4">
+
+                                <!-- Titre du livre -->
+                                <Label Text="{Binding Titre}"
+                                       FontAttributes="Bold"
+                                       FontSize="16" />
+
+                                <!-- ISBN -->
+                                <Label Text="{Binding ISBN}"
+                                       TextColor="Gray"
+                                       FontSize="13" />
+
+                                <!-- Auteur -->
+                                <Label Text="{Binding Auteur.Nom}"
+                                       TextColor="#2E6DA4"
+                                       FontSize="13" />
+
+                                <!-- Éditeur -->
+                                <Label Text="{Binding Editeur.Nom}"
+                                       TextColor="#2E6DA4"
+                                       FontSize="13" />
+
+                            </VerticalStackLayout>
+
+                        </Frame>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

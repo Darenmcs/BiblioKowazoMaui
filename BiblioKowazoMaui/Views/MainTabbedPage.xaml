@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Page principale avec navigation par onglets (TabbedPage) -->
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:BiblioKowazoMaui.Views"
+            x:Class="BiblioKowazoMaui.Views.MainTabbedPage"
+            BarBackgroundColor="#512BD4"
+            BarTextColor="White">
+
+    <!-- Onglet Auteurs -->
+    <views:AuteursPage Title="Auteurs" />
+
+    <!-- Onglet Éditeurs -->
+    <views:EditeursPage Title="Éditeurs" />
+
+    <!-- Onglet Catégories -->
+    <views:CategoriesPage Title="Catégories" />
+
+    <!-- Onglet Livres -->
+    <views:LivresPage Title="Livres" />
+
+    <!-- Onglet Recherche -->
+    <views:RecherchePage Title="Recherche" />
+
+</TabbedPage>

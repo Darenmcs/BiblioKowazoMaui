@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Page MAUI pour gérer les livres -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiblioKowazoMaui.Views.LivresPage"
+             Title="Livres">
+
+    <!-- Permet de scroller si la page est longue -->
+    <ScrollView>
+
+        <!-- Conteneur principal vertical -->
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- Titre de la page -->
+            <Label Text="Gestion des Livres"
+                   FontSize="22"
+                   FontAttributes="Bold" />
+
+            <!-- Formulaire d’ajout / modification -->
+            <Frame Padding="12"
+                   BorderColor="#CCCCCC"
+                   CornerRadius="8">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- Titre du livre -->
+                    <Label Text="Titre :" />
+                    <Entry x:Name="TxtTitre"
+                           Placeholder="Titre du livre" />
+
+                    <!-- ISBN -->
+                    <Label Text="ISBN :" />
+                    <Entry x:Name="TxtISBN"
+                           Placeholder="ISBN" />
+
+                    <!-- Prix -->
+                    <Label Text="Prix :" />
+                    <Entry x:Name="TxtPrix"
+                           Placeholder="Prix"
+                           Keyboard="Numeric" />
+
+                    <!-- Date de publication -->
+                    <Label Text="Date de publication :" />
+                    <DatePicker x:Name="DpDate" />
+
+                    <!-- Sélection auteur -->
+                    <Label Text="Auteur :" />
+                    <Picker x:Name="PickerAuteur"
+                            Title="Choisir un auteur" />
+
+                    <!-- Sélection éditeur -->
+                    <Label Text="Éditeur :" />
+                    <Picker x:Name="PickerEditeur"
+                            Title="Choisir un éditeur" />
+
+                    <!-- Boutons d’actions -->
+                    <HorizontalStackLayout Spacing="8">
+
+                        <!-- Ajouter livre -->
+                        <Button Text="Ajouter"
+                                BackgroundColor="#512BD4"
+                                TextColor="White"
+                                Clicked="BtnAjouter_Click" />
+
+                        <!-- Modifier livre -->
+                        <Button Text="Modifier"
+                                BackgroundColor="#f5a623"
+                                TextColor="White"
+                                Clicked="BtnModifier_Click" />
+
+                        <!-- Supprimer livre -->
+                        <Button Text="Supprimer"
+                                BackgroundColor="#ff5252"
+                                TextColor="White"
+                                Clicked="BtnSupprimer_Click" />
+
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Message de statut -->
+            <Label x:Name="LblStatus"
+                   TextColor="Gray"
+                   FontSize="12" />
+
+            <!-- Liste des livres -->
+            <CollectionView x:Name="cvLivres"
+                            SelectionMode="Single"
+                            SelectionChanged="Cv_SelectionChanged"
+                            EmptyView="Aucun livre.">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <!-- Carte d’un livre -->
+                        <Frame Margin="0,4"
+                               Padding="12"
+                               CornerRadius="8"
+                               BorderColor="#CCCCCC">
+
+                            <VerticalStackLayout Spacing="4">
+
+                                <!-- Titre du livre -->
+                                <Label Text="{Binding Titre}"
+                                       FontAttributes="Bold"
+                                       FontSize="16" />
+
+                                <!-- ISBN -->
+                                <Label Text="{Binding ISBN}"
+                                       FontSize="13"
+                                       TextColor="Gray" />
+
+                                <!-- Auteur du livre -->
+                                <Label Text="{Binding Auteur.Nom}"
+                                       FontSize="13"
+                                       TextColor="#2E6DA4" />
+
+                                <!-- Éditeur du livre -->
+                                <Label Text="{Binding Editeur.Nom}"
+                                       FontSize="13"
+                                       TextColor="#2E6DA4" />
+
+                            </VerticalStackLayout>
+
+                        </Frame>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

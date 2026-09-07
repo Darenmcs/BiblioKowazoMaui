@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Classe principale de l'application MAUI -->
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BiblioKowazoMaui"
+             x:Class="BiblioKowazoMaui.App">
+
+    <!-- Ressources globales de l'application (styles, couleurs, etc.) -->
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Fusion de plusieurs fichiers de styles -->
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Fichier pour les couleurs -->
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+
+                <!-- Fichier pour les styles (boutons, labels, etc.) -->
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

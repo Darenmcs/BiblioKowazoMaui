@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Page MAUI pour gérer les éditeurs -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiblioKowazoMaui.Views.EditeursPage"
+             Title="Éditeurs">
+
+    <!-- Permet de scroller si la page est longue -->
+    <ScrollView>
+
+        <!-- Conteneur principal vertical -->
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- Titre de la page -->
+            <Label Text="Gestion des Éditeurs"
+                   FontSize="22"
+                   FontAttributes="Bold" />
+
+            <!-- Formulaire d’ajout / modification -->
+            <Frame Padding="12"
+                   BorderColor="#CCCCCC"
+                   CornerRadius="8">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- Champ Nom -->
+                    <Label Text="Nom :" />
+                    <Entry x:Name="TxtNom"
+                           Placeholder="Nom de l'éditeur" />
+
+                    <!-- Champ Adresse -->
+                    <Label Text="Adresse :" />
+                    <Entry x:Name="TxtAdresse"
+                           Placeholder="Adresse" />
+
+                    <!-- Boutons d’actions -->
+                    <HorizontalStackLayout Spacing="8">
+
+                        <!-- Ajouter éditeur -->
+                        <Button Text="Ajouter"
+                                BackgroundColor="#512BD4"
+                                TextColor="White"
+                                Clicked="BtnAjouter_Click" />
+
+                        <!-- Modifier éditeur -->
+                        <Button Text="Modifier"
+                                BackgroundColor="#f5a623"
+                                TextColor="White"
+                                Clicked="BtnModifier_Click" />
+
+                        <!-- Supprimer éditeur -->
+                        <Button Text="Supprimer"
+                                BackgroundColor="#ff5252"
+                                TextColor="White"
+                                Clicked="BtnSupprimer_Click" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Message de statut (succès / erreur) -->
+            <Label x:Name="LblStatus"
+                   TextColor="Gray"
+                   FontSize="12" />
+
+            <!-- Liste des éditeurs -->
+            <CollectionView x:Name="cvEditeurs"
+                            SelectionMode="Single"
+                            SelectionChanged="Cv_SelectionChanged"
+                            EmptyView="Aucun éditeur trouvé.">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <!-- Carte d’un éditeur -->
+                        <Frame Margin="0,4"
+                               Padding="12"
+                               CornerRadius="8"
+                               BorderColor="#CCCCCC">
+
+                            <VerticalStackLayout Spacing="4">
+
+                                <!-- Nom éditeur -->
+                                <Label Text="{Binding Nom}"
+                                       FontAttributes="Bold"
+                                       FontSize="16" />
+
+                                <!-- Adresse éditeur -->
+                                <Label Text="{Binding Adresse}"
+                                       TextColor="Gray"
+                                       FontSize="13" />
+
+                            </VerticalStackLayout>
+
+                        </Frame>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

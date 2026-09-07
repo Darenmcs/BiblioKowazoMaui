@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Page MAUI pour gérer les catégories -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiblioKowazoMaui.Views.CategoriesPage"
+             Title="Catégories">
+
+    <!-- Permet de scroller si la page est longue -->
+    <ScrollView>
+
+        <!-- Conteneur principal vertical -->
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- Titre de la page -->
+            <Label Text="Gestion des Catégories"
+                   FontSize="22"
+                   FontAttributes="Bold" />
+
+            <!-- Formulaire d'ajout / modification -->
+            <Frame Padding="12"
+                   BorderColor="#CCCCCC"
+                   CornerRadius="8">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- Champ Nom -->
+                    <Label Text="Nom :" />
+                    <Entry x:Name="TxtNom"
+                           Placeholder="Nom de la catégorie" />
+
+                    <!-- Champ Description -->
+                    <Label Text="Description :" />
+                    <Entry x:Name="TxtDescription"
+                           Placeholder="Description" />
+
+                    <!-- Boutons d’action -->
+                    <HorizontalStackLayout Spacing="8">
+
+                        <!-- Ajouter catégorie -->
+                        <Button Text="Ajouter"
+                                BackgroundColor="#512BD4"
+                                TextColor="White"
+                                Clicked="BtnAjouter_Click" />
+
+                        <!-- Modifier catégorie -->
+                        <Button Text="Modifier"
+                                BackgroundColor="#f5a623"
+                                TextColor="White"
+                                Clicked="BtnModifier_Click" />
+
+                        <!-- Supprimer catégorie -->
+                        <Button Text="Supprimer"
+                                BackgroundColor="#ff5252"
+                                TextColor="White"
+                                Clicked="BtnSupprimer_Click" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Message de statut (succès / erreur) -->
+            <Label x:Name="LblStatus"
+                   TextColor="Gray"
+                   FontSize="12" />
+
+            <!-- Liste des catégories -->
+            <CollectionView x:Name="cvCategories"
+                            SelectionMode="Single"
+                            SelectionChanged="Cv_SelectionChanged"
+                            EmptyView="Aucune catégorie.">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <!-- Carte d'une catégorie -->
+                        <Frame Margin="0,4"
+                               Padding="12"
+                               CornerRadius="8"
+                               BorderColor="#CCCCCC">
+
+                            <VerticalStackLayout Spacing="4">
+
+                                <!-- Nom de la catégorie -->
+                                <Label Text="{Binding Nom}"
+                                       FontAttributes="Bold"
+                                       FontSize="16" />
+
+                                <!-- Description -->
+                                <Label Text="{Binding Description}"
+                                       TextColor="Gray"
+                                       FontSize="13" />
+
+                            </VerticalStackLayout>
+
+                        </Frame>
+
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

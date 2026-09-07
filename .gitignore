@@ -1,0 +1,28 @@
+
+· GITIGNORE
+## .NET / MAUI
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+ 
+## Visual Studio
+.vs/
+*.rsuser
+[Tt]est[Rr]esult*/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+ 
+## NuGet
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+ 
+## OS
+.DS_Store
+Thumbs.db
+ 
